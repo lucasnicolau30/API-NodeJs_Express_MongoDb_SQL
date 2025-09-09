@@ -11,5 +11,7 @@ const routes = new Router();
 routes.post('/sessions' , SessionController.store);
 // routes.post('/houses' , upload.single('thumbnail') , HouseController.store);
 routes.post('/houses' , HouseController.store);
+routes.get('/houses' , HouseController.index);
+routes.put('/houses/:house_id' , HouseController.update);
 
 export default routes;
