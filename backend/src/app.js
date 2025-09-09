@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import routes from './routes';
 
 class App{
@@ -14,6 +15,10 @@ class App{
     }
 
     middlewares(){
+
+        // cors sempre primeiro -> qq um pode fazer a requisição na API
+        this.server.use(cors());
+
         this.server.use(express.json());
     }
 
