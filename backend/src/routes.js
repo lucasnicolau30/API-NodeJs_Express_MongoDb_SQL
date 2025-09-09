@@ -4,6 +4,7 @@ import { Router } from 'express';
 
 import SessionController from './controllers/SessionController';
 import HouseController from './controllers/HouseController';
+import DashboardController  from './controllers/DashboardController';
 
 const routes = new Router();
 // const upload = multer(uploadConfig);
@@ -14,5 +15,7 @@ routes.post('/houses' , HouseController.store);
 routes.get('/houses' , HouseController.index);
 routes.put('/houses/:house_id' , HouseController.update);
 routes.delete('/houses' , HouseController.destroy);
+
+routes.get('/dashboard' , DashboardController.show);
 
 export default routes;
