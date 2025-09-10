@@ -4,6 +4,15 @@ import User from '../models/User';
 
 class ReserveController{
 
+    async index(req, res){
+
+        const { user_id } = req.headers;
+
+        const reserves = await Reserve.find({ user: user_id }).populate('house');
+
+        return res.json(reserves);
+    }
+
     async store(req, res){
 
         const { user_id } = req.headers;
@@ -36,6 +45,15 @@ class ReserveController{
         await reserve.populate([{ path: 'house' }, { path: 'user' }]);
         
         return res.json(reserve);
+    }
+
+    async destroy(req, res){
+
+        const { reserve_id } = req.body;
+
+        await Reserve.findOneAndDelete({_id: reserve_id});
+
+        return res.send();
     }
 }
 
